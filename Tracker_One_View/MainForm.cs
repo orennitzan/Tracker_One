@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace Tracker_One_View
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
+
+            List<string> chkList = new List<string>() { "aaa", "bbb", "ccc", "ddd", "eee" };
+
+            ListBox.ObjectCollection col = new ListBox.ObjectCollection(chkBxList);
+            
+            //chkBxList.Items.Add()
         }
+
+
     }
 }
