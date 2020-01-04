@@ -26,7 +26,7 @@ namespace Tracker_One_Core
                 case EntityColor.red:
                     c = Color.Red;
                     break;
-                case EntityColor.grean:
+                case EntityColor.green:
                     c = Color.Green;
                     break;
                 case EntityColor.blue:
@@ -105,8 +105,8 @@ namespace Tracker_One_Core
 
         internal static MovementDirection GetRandomDirection(XEntity xe)
         {
-            int i = rnd.Next(1, 5);
-            var dir = (MovementDirection)i;
+            int r = rnd.Next(1, 5);
+            var dir = (MovementDirection)r;
             return dir;
         }
     }

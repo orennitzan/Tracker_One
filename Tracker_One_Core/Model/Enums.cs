@@ -23,7 +23,7 @@ namespace Tracker_One_Core.Model
     public enum EntityColor
     {
         red,
-        grean,
+        green,
         blue,
         bluck
     }

@@ -82,7 +82,7 @@ namespace Tracker_One_Core
             if (direction == MovementDirection.UP)
             {
                 // On up direction validate the new position is not out of board's top.
-                if ((entityY + 1) * Constants.factor <= Constants.boardTop / Constants.factor)
+                if ((entityY + 1) < Constants.boardSize)
                     return ++entityY;
 
                 return entityY;
@@ -90,7 +90,7 @@ namespace Tracker_One_Core
             else if (direction == MovementDirection.DOWN)
             {
                 // On down direction validate the new position is not out of board's bottom.
-                if ((entityY - 1) * Constants.factor >= (Constants.boardTop + Constants.boardSize) / Constants.factor)
+                if ((entityY - 1) > 0)
                     return --entityY;
 
                 return entityY;
@@ -106,7 +106,7 @@ namespace Tracker_One_Core
             if (direction == MovementDirection.RIGHT)
             {
                 // On Right direction validate the new position is not out of board's right.
-                if ((entityX + 1) * Constants.factor <= (Constants.boardLeft + Constants.boardSize) / Constants.factor)
+                if ((entityX + 1) < Constants.boardSize)
                     return ++entityX;
 
                 return entityX;
@@ -114,7 +114,7 @@ namespace Tracker_One_Core
             else if (direction == MovementDirection.LEFT)
             {
                 // On left direction validate the new position is not out of board's left.
-                if ((entityX - 1) * Constants.factor >= Constants.boardLeft / Constants.factor)
+                if ((entityX - 1) > 0)
                     return --entityX;
 
                 return entityX;

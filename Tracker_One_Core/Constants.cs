@@ -18,9 +18,9 @@ namespace Tracker_One_Core
 
         public const float boardTop = 30f;
         public const float boardLeft = 230f;
-        public const float boardSize = 500f;
-
+        public const float boardPixelSize = 500f;
+        public const int boardSize = 100;
         // factor is the board pixel size / board business size (100)
-        public const float factor = boardSize / 100;
+        public const float factor = boardPixelSize / boardSize;
     }
 }

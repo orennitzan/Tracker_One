@@ -42,7 +42,7 @@
 	"entity_ID": "6",
 	"name": "Oren",
 	"color": "green",
-	"shape": "circle",
+	"shape": "triangle",
 	"size": "large",
 	"X": "95",
 	"Y": "50"

@@ -106,7 +106,7 @@ namespace Tracker_One_View
         private void DrawBoardBackground(Graphics g)
         {
             SolidBrush br = new SolidBrush(Color.FromArgb(226, 226, 250));
-            g.FillRectangle(br, Constants.boardLeft, Constants.boardTop, Constants.boardSize, Constants.boardSize);
+            g.FillRectangle(br, Constants.boardLeft, Constants.boardTop, Constants.boardPixelSize, Constants.boardPixelSize);
         }
 
         private void DrawBoardEntity(Graphics g, XEntity xe)
@@ -121,7 +121,7 @@ namespace Tracker_One_View
             float x = xe.X * Constants.factor + Constants.boardLeft;
 
             // Set y to be relative to board's botom y
-            float y = Constants.boardTop + Constants.boardSize - xe.Y * Constants.factor - size;
+            float y = Constants.boardTop + Constants.boardPixelSize - xe.Y * Constants.factor - size;
 
             // Brush
             var brush = HelperMethods.GetSolidBrush(xe.Color);
