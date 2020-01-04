@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tracker_One_Core.Access;
+using Tracker_One_Core.Model;
 
 namespace Tracker_One_Core
 {
@@ -22,16 +24,100 @@ namespace Tracker_One_Core
             _board.Entities = Repository.GetEntitiesListFromJson();
             return true;
         }
-        
+
         /// <summary>
         /// Iterates through the list of entities and for each of them relocate it at a new position.
         /// </summary>
         /// <returns></returns>
         public bool RepositionEntities()
         {
-
-            return false;
+            foreach (var xe in _board.Entities)
+            {
+                RepositionEntity(xe);
+            }
+            return true;
         }
+
+        private void RepositionEntity(XEntity xe)
+        {
+            int newX = -1;
+            int newY = -1;
+
+            do
+            {
+                var direction = HelperMethods.GetRandomDirection(xe);
+                switch (direction)
+                {
+                    case MovementDirection.UP:
+                    case MovementDirection.DOWN:
+                        newY = GetValidVertical(xe.Y, direction);
+                        newX = xe.X;
+                        break;
+                    case MovementDirection.RIGHT:
+                    case MovementDirection.LEFT:
+                        newX = GetValidHorisental(xe.X, direction);
+                        newY = xe.Y;
+                        break;
+                }
+            }
+            // If new point equals prev point.. need to get new posision
+            while (newX == xe.PrevPoint.X && newY == xe.PrevPoint.Y);
+
+            // Save current to prev point
+            xe.PrevPoint = new Point(xe.X, xe.Y);
+
+            // reposition entity with the new point
+            xe.X = newX;
+            xe.Y = newY;
+        }
+
+        private int GetValidVertical(int entityY, MovementDirection direction)
+        {
+            // Note!! Entity Y Increas is boed decreas and vice versa.
+            if (direction == MovementDirection.UP)
+            {
+                // On up direction validate the new position is not out of board's top.
+                if ((entityY + 1) * Constants.factor <= Constants.boardTop / Constants.factor)
+                    return ++entityY;
+
+                return entityY;
+            }
+            else if (direction == MovementDirection.DOWN)
+            {
+                // On down direction validate the new position is not out of board's bottom.
+                if ((entityY - 1) * Constants.factor >= (Constants.boardTop + Constants.boardSize) / Constants.factor)
+                    return --entityY;
+
+                return entityY;
+            }
+
+            return entityY;
+        }
+
+
+        private int GetValidHorisental(int entityX, MovementDirection direction)
+        {
+            // Note!! Entity Y Increas is boed decreas and vice versa.
+            if (direction == MovementDirection.RIGHT)
+            {
+                // On Right direction validate the new position is not out of board's right.
+                if ((entityX + 1) * Constants.factor <= (Constants.boardLeft + Constants.boardSize) / Constants.factor)
+                    return ++entityX;
+
+                return entityX;
+            }
+            else if (direction == MovementDirection.LEFT)
+            {
+                // On left direction validate the new position is not out of board's left.
+                if ((entityX - 1) * Constants.factor >= Constants.boardLeft / Constants.factor)
+                    return --entityX;
+
+                return entityX;
+            }
+
+            return entityX;
+        }
+
 
         /// <summary>
         /// Saves the data to csv file.

@@ -17,21 +17,13 @@ namespace Tracker_One_View
     {
         private BoardMgr mgr = null;
 
-        // Ofsets to locate entity titles
-        private const float offsetX_s = 15f;
-        private const float offsetY_s = 15f;
-        private const float offsetX_m = 19f;
-        private const float offsetY_m = 17f;
-        private const float offsetX_l = 22f;
-        private const float offsetY_l = 17f;
+        static System.Windows.Forms.Timer boardTimer = new System.Windows.Forms.Timer();
 
-        private const float boardTop = 30f;
-        private const float boardLeft = 230f;
-        private const float boardSize = 500f;
-
-        // factor is the board pixel size / board business size (100)
-        private const float factor = boardSize / 100;
-
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            boardTimer.Tick += new EventHandler(TimerTimeElapsed);
+            boardTimer.Interval = 5000;
+        }
 
         public frmMain()
         {
@@ -113,7 +105,7 @@ namespace Tracker_One_View
         private void DrawBoardBackground(Graphics g)
         {
             SolidBrush br = new SolidBrush(Color.FromArgb(226, 226, 250));
-            g.FillRectangle(br, boardLeft, boardTop, boardSize, boardSize);
+            g.FillRectangle(br, Constants.boardLeft, Constants.boardTop, Constants.boardSize, Constants.boardSize);
         }
 
         private void DrawBoardEntity(Graphics g, XEntity xe)
@@ -125,10 +117,10 @@ namespace Tracker_One_View
             // Center location of the shape
 
             // Set x to relative to board's x
-            float x = xe.X * factor + boardLeft;
+            float x = xe.X * Constants.factor + Constants.boardLeft;
 
             // Set y to be relative to board's botom y
-            float y = boardTop + boardSize - xe.Y * factor - size;
+            float y = Constants.boardTop + Constants.boardSize - xe.Y * Constants.factor - size;
 
             // Brush
             var brush = HelperMethods.GetSolidBrush(xe.Color);
@@ -166,16 +158,16 @@ namespace Tracker_One_View
             switch (size)
             {
                 case EntitySize.small:
-                    offsetX = offsetX_s;
-                    offsetY = offsetY_s;
+                    offsetX = Constants.offsetX_s;
+                    offsetY = Constants.offsetY_s;
                     break;
                 case EntitySize.medium:
-                    offsetX = offsetX_m;
-                    offsetY = offsetY_m;
+                    offsetX = Constants.offsetX_m;
+                    offsetY = Constants.offsetY_m;
                     break;
                 case EntitySize.large:
-                    offsetX = offsetX_l;
-                    offsetY = offsetY_l;
+                    offsetX = Constants.offsetX_l;
+                    offsetY = Constants.offsetY_l;
                     break;
             }
 
@@ -184,5 +176,23 @@ namespace Tracker_One_View
 
         }
 
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            boardTimer.Start();
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            boardTimer.Stop();
+        }
+
+        // This is the method to run when the timer is raised.
+        private void TimerTimeElapsed(Object obj, EventArgs e)
+        {
+            mgr.RepositionEntities();
+            this.Invalidate();
+        }
+
     }
 }
+

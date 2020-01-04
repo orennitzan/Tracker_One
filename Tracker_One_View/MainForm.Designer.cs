@@ -45,6 +45,7 @@
             this.btnStart.TabIndex = 1;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // btnStop
             // 
@@ -54,6 +55,7 @@
             this.btnStop.TabIndex = 2;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // numUpDwn
             // 
@@ -106,6 +108,7 @@
             this.Name = "frmMain";
             this.ShowIcon = false;
             this.Text = "Tracker One";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numUpDwn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

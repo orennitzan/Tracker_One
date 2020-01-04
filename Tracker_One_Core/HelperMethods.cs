@@ -11,6 +11,8 @@ namespace Tracker_One_Core
 {
     public class HelperMethods
     {
+        private static Random rnd = new Random();
+
         public static string GetJsonFilePath()
         {
             return Environment.CurrentDirectory;
@@ -99,6 +101,13 @@ namespace Tracker_One_Core
             var bPow = Math.Pow(Convert.ToDouble(b), 2);
             var cPow = Math.Pow(Convert.ToDouble(size), 2);
             return (int)Math.Sqrt(cPow - bPow);
+        }
+
+        internal static MovementDirection GetRandomDirection(XEntity xe)
+        {
+            int i = rnd.Next(1, 5);
+            var dir = (MovementDirection)i;
+            return dir;
         }
     }
 }

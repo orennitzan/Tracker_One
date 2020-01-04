@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Tracker_One_Core
 {
@@ -46,9 +47,18 @@ namespace Tracker_One_Core
 
         public bool IsVisiable { get; set; }
 
+        public Point PrevPoint { get; set; }
+
+        public List<Point> HistoryTrack { get; set; }
+
         public XEntity()
         {
             IsVisiable = true;
+            // Init the hitory track and populate the current point. By default we want to remember at least one point.
+            HistoryTrack = new List<Point>();
+            HistoryTrack.Add(new Point(X, Y));
+
+            PrevPoint = new Point(-999, -999);
         }
     }
 
@@ -56,5 +66,6 @@ namespace Tracker_One_Core
     {
         public string Id { get; set; }
         public string DisplayName { get; set; }
+        // TOOD add DisplayTitle Here
     }
 }

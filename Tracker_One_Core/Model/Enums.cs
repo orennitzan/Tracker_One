@@ -27,4 +27,12 @@ namespace Tracker_One_Core.Model
         blue,
         bluck
     }
+
+    public enum MovementDirection
+    {
+        UP = 1,
+        DOWN,
+        RIGHT,
+        LEFT
+    }
 }
