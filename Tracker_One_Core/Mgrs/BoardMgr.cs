@@ -34,8 +34,31 @@ namespace Tracker_One_Core
             foreach (var xe in _board.Entities)
             {
                 RepositionEntity(xe);
+                SaveTrackHistory(xe);
             }
             return true;
+        }
+
+        /// <summary>
+        /// // Update the history track list and remove the last extra step if the list exceeded the number of his steps the user selected
+        /// </summary>
+        /// <param name="xe"></param>
+        private void SaveTrackHistory(XEntity xe)
+        {
+            // Insert new point at index zero.    
+            xe.HistoryTrack.Insert(0, new Point(xe.X, xe.Y));
+            // if the length of the list is greater the intended, go ahead and remove extras.
+            if (xe.HistoryTrack.Count > _board.HisNumberOfSteps)
+            {
+                // Start index to remove at is the HisNumberOfSteps. The list is zero based, so the HisNumberOfSteps indecates the extra start index.
+                int startInx = _board.HisNumberOfSteps; 
+                
+                // The raeng count of extras to remove.
+                int range = xe.HistoryTrack.Count - _board.HisNumberOfSteps;
+                
+                // remove range
+                xe.HistoryTrack.RemoveRange(startInx, range);
+            }
         }
 
         private void RepositionEntity(XEntity xe)
@@ -69,11 +92,6 @@ namespace Tracker_One_Core
             // reposition entity with the new point
             xe.X = newX;
             xe.Y = newY;
-
-            // Update the history track list and remove the last extra step if the list exceeded the number of his steps the user selected
-            xe.HistoryTrack.Insert(0, new Point(newX, newY));
-            if (xe.HistoryTrack.Count > _board.HisNumberOfSteps)
-                xe.HistoryTrack.RemoveRange(_board.HisNumberOfSteps - 1, xe.HistoryTrack.Count - _board.HisNumberOfSteps);
         }
 
         private int GetValidVertical(int entityY, MovementDirection direction)
