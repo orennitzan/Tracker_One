@@ -67,7 +67,7 @@ namespace Tracker_One_Core
 
         public static EntityShape GetEntityShape(string shape)
         {
-            // Default shape - square.
+            // Default shape - square. 
             EntityShape es = EntityShape.square;
             Enum.TryParse<EntityShape>(shape, out es);
             if ((int)es == 0) es = EntityShape.square;
