@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
-            this.chkBxList = new System.Windows.Forms.CheckedListBox();
             this.picBoard = new System.Windows.Forms.PictureBox();
             this.numUpDwn = new System.Windows.Forms.NumericUpDown();
             this.lblNSteps = new System.Windows.Forms.Label();
+            this.chkBxList = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.picBoard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDwn)).BeginInit();
             this.SuspendLayout();
@@ -56,15 +56,6 @@
             this.btnStop.TabIndex = 2;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
-            // 
-            // chkBxList
-            // 
-            this.chkBxList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkBxList.FormattingEnabled = true;
-            this.chkBxList.Location = new System.Drawing.Point(23, 33);
-            this.chkBxList.Name = "chkBxList";
-            this.chkBxList.Size = new System.Drawing.Size(120, 345);
-            this.chkBxList.TabIndex = 3;
             // 
             // picBoard
             // 
@@ -101,14 +92,22 @@
             this.lblNSteps.TabIndex = 6;
             this.lblNSteps.Text = "History Steps (1-5):";
             // 
+            // chkBxList
+            // 
+            this.chkBxList.AutoSize = true;
+            this.chkBxList.Location = new System.Drawing.Point(23, 30);
+            this.chkBxList.Name = "chkBxList";
+            this.chkBxList.Size = new System.Drawing.Size(120, 200);
+            this.chkBxList.TabIndex = 7;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.chkBxList);
             this.Controls.Add(this.lblNSteps);
             this.Controls.Add(this.numUpDwn);
-            this.Controls.Add(this.chkBxList);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.picBoard);
@@ -131,8 +130,8 @@
         private System.Windows.Forms.PictureBox picBoard;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnStop;
-        private System.Windows.Forms.CheckedListBox chkBxList;
         private System.Windows.Forms.NumericUpDown numUpDwn;
         private System.Windows.Forms.Label lblNSteps;
+        private System.Windows.Forms.Panel chkBxList;
     }
 }

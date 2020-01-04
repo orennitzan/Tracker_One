@@ -18,11 +18,15 @@ namespace Tracker_One_View
         public frmMain()
         {
             InitializeComponent();
+            Init();
+        }
+
+        private void Init()
+        {
             mgr = new BoardMgr();
             mgr.BoardInit();
-            
-
             SetHisStepsDefaults();
+            LoadCheckBoxList();
         }
 
         /// <summary>
@@ -37,6 +41,25 @@ namespace Tracker_One_View
 
         }
 
+        private void LoadCheckBoxList()
+        {
+            var y = chkBxList.Location.Y - 30;
+            foreach (var item in mgr.GetEntitiesDisplayList())
+            {
+                var chk = new CheckBox();
+                chk.Name = item.Id;
+                chk.Text = item.DisplayName;
+                chk.Location = new Point(chkBxList.Location.X, y += 30); //vertical
+                chk.Click += CheckBox_Clicked;
+                chkBxList.Controls.Add(chk);
+            }
+        }
 
+        private void CheckBox_Clicked(object sender, EventArgs e)
+        {
+            var chk = sender as CheckBox;
+            var isVisiable = chk.Checked;
+            // TODO show hide relevet uc
+        }
     }
 }

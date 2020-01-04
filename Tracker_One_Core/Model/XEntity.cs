@@ -36,4 +36,10 @@ namespace Tracker_One_Core
             }
         }
     }
+
+    public struct XDisplayEntity
+    {
+        public string Id { get; set; }
+        public string DisplayName { get; set; }
+    }
 }

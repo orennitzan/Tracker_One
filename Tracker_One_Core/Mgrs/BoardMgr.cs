@@ -10,7 +10,7 @@ namespace Tracker_One_Core
 {
     public class BoardMgr
     {
-        Board board;
+        Board _board;
 
         /// <summary>
         /// Init a board and fill/load the Entities list using Repository access layer to read and parse the json data.
@@ -18,8 +18,8 @@ namespace Tracker_One_Core
         /// <returns></returns>
         public bool BoardInit()
         {
-            board = new Board();
-            board.Entities = Repository.GetEntitiesListFromJson();
+            _board = new Board();
+            _board.Entities = Repository.GetEntitiesListFromJson();
             return true;
         }
         
@@ -54,7 +54,7 @@ namespace Tracker_One_Core
             if (numOfHisSteps < 1)
                 numOfHisSteps = 1;
 
-            board.HisNumberOfSteps = numOfHisSteps;
+            _board.HisNumberOfSteps = numOfHisSteps;
         }
 
         public int GetMinHisStepsValueFromConfig()
@@ -77,5 +77,18 @@ namespace Tracker_One_Core
             return maxSteps;
 
         }
+
+        /// <summary>
+        /// Returns a list of diplay version of the entities.
+        /// </summary>
+        /// <returns></returns>
+        public List<XDisplayEntity> GetEntitiesDisplayList()
+        {
+            // Return a new list for display. That way we can be sure the the actual list is not to be changed unintendedly.
+            return _board.Entities.Select(o => new XDisplayEntity() { Id = o.entity_ID, DisplayName = o.DisplayName }).ToList();
+        }
+
     }
+
+
 }
