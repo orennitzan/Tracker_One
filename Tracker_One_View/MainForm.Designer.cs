@@ -34,7 +34,10 @@
             this.numUpDwn = new System.Windows.Forms.NumericUpDown();
             this.lblNSteps = new System.Windows.Forms.Label();
             this.chkBxList = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numUpDownIntervals = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDwn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownIntervals)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -59,7 +62,7 @@
             // 
             // numUpDwn
             // 
-            this.numUpDwn.Location = new System.Drawing.Point(23, 424);
+            this.numUpDwn.Location = new System.Drawing.Point(23, 401);
             this.numUpDwn.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -78,7 +81,7 @@
             // lblNSteps
             // 
             this.lblNSteps.AutoSize = true;
-            this.lblNSteps.Location = new System.Drawing.Point(23, 405);
+            this.lblNSteps.Location = new System.Drawing.Point(23, 382);
             this.lblNSteps.Name = "lblNSteps";
             this.lblNSteps.Size = new System.Drawing.Size(96, 13);
             this.lblNSteps.TabIndex = 6;
@@ -92,11 +95,50 @@
             this.chkBxList.Size = new System.Drawing.Size(120, 200);
             this.chkBxList.TabIndex = 7;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 431);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Movenemt Intervals (ms)";
+            // 
+            // numUpDownIntervals
+            // 
+            this.numUpDownIntervals.Increment = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numUpDownIntervals.Location = new System.Drawing.Point(23, 450);
+            this.numUpDownIntervals.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numUpDownIntervals.Minimum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numUpDownIntervals.Name = "numUpDownIntervals";
+            this.numUpDownIntervals.Size = new System.Drawing.Size(120, 20);
+            this.numUpDownIntervals.TabIndex = 8;
+            this.numUpDownIntervals.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numUpDownIntervals.ValueChanged += new System.EventHandler(this.numUpDownIntervals_ValueChanged);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.numUpDownIntervals);
             this.Controls.Add(this.chkBxList);
             this.Controls.Add(this.lblNSteps);
             this.Controls.Add(this.numUpDwn);
@@ -111,6 +153,7 @@
             this.Text = "Tracker One";
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numUpDwn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownIntervals)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,5 +166,7 @@
         private System.Windows.Forms.NumericUpDown numUpDwn;
         private System.Windows.Forms.Label lblNSteps;
         private System.Windows.Forms.Panel chkBxList;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numUpDownIntervals;
     }
 }

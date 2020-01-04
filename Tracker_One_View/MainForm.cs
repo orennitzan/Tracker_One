@@ -22,7 +22,7 @@ namespace Tracker_One_View
         private void frmMain_Load(object sender, EventArgs e)
         {
             boardTimer.Tick += new EventHandler(TimerTimeElapsed);
-            boardTimer.Interval = 500;
+            boardTimer.Interval = (int)numUpDownIntervals.Value;
         }
 
         public frmMain()
@@ -36,9 +36,15 @@ namespace Tracker_One_View
             mgr = new BoardMgr();
             mgr.BoardInit();
             SetHisStepsDefaults();
+            SetIntervalDefaults();
             LoadCheckBoxList();
             mgr.SetHistoryNunberOfSteps(Convert.ToInt32(numUpDwn.Value));
 
+        }
+
+        private void SetIntervalDefaults()
+        {
+            numUpDownIntervals.Value = 5000;
         }
 
         /// <summary>
@@ -50,7 +56,6 @@ namespace Tracker_One_View
             numUpDwn.Minimum = minSteps;
             numUpDwn.Value = minSteps;
             numUpDwn.Maximum = mgr.GetMaxHisStepsValueFromConfig();
-
         }
 
         private void LoadCheckBoxList()
@@ -198,6 +203,13 @@ namespace Tracker_One_View
         private void numUpDwn_ValueChanged(object sender, EventArgs e)
         {
             mgr.SetHistoryNunberOfSteps(Convert.ToInt32(numUpDwn.Value));
+        }
+
+        private void numUpDownIntervals_ValueChanged(object sender, EventArgs e)
+        {
+            //boardTimer.Stop();
+            boardTimer.Interval = (int)numUpDownIntervals.Value;
+            //boardTimer.Start();
         }
 
     }
