@@ -120,6 +120,10 @@ namespace Tracker_One_View
             // Entity Size
             int size = HelperMethods.GetEntitySize(xe.Size);
 
+            //Validate x,y
+            if (xe.X < 0 || xe.X > Constants.boardSize) xe.X = 0;
+            if (xe.Y < 0 || xe.Y > Constants.boardSize) xe.Y = 0;
+
             // Center location of the shape
 
             // Set x to relative to board's x

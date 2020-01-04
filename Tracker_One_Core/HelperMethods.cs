@@ -39,9 +39,9 @@ namespace Tracker_One_Core
 
         public static SolidBrush GetSolidBrush(string color)
         {
-            EntityColor ec = EntityColor.bluck;
+            EntityColor ec = EntityColor.red;
             Enum.TryParse<EntityColor>(color, out ec);
-            // TODO log warn
+            if ((int)ec == 0) ec = EntityColor.red;
             Color c = GetEntityColor(ec);
             SolidBrush br = new SolidBrush(c);
             return br;
@@ -52,15 +52,16 @@ namespace Tracker_One_Core
             // Default size - medium.
             EntitySize es = EntitySize.medium;
             Enum.TryParse<EntitySize>(size, out es);
+            if ((int)es == 0) es = EntitySize.medium;
             return es;
         }
-
 
         public static int GetEntitySize(string size)
         {
             // Default size - medium.
             EntitySize es = EntitySize.medium;
             Enum.TryParse<EntitySize>(size, out es);
+            if ((int)es == 0) es = EntitySize.medium;
             return Convert.ToInt32(es);
         }
 
@@ -69,6 +70,7 @@ namespace Tracker_One_Core
             // Default shape - square.
             EntityShape es = EntityShape.square;
             Enum.TryParse<EntityShape>(shape, out es);
+            if ((int)es == 0) es = EntityShape.square;
             return es;
         }
 

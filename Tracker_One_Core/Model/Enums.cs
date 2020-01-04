@@ -24,8 +24,7 @@ namespace Tracker_One_Core.Model
     {
         red,
         green,
-        blue,
-        bluck
+        blue
     }
 
     public enum MovementDirection

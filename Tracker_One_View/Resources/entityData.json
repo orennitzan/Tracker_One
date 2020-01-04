@@ -41,9 +41,9 @@
 }, {
 	"entity_ID": "6",
 	"name": "Oren",
-	"color": "green",
-	"shape": "triangle",
+	"color": "green_1",
+	"shape": "triangle_1",
 	"size": "large",
-	"X": "95",
+	"X": "-100",
 	"Y": "50"
 }]

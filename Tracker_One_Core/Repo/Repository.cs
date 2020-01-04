@@ -14,12 +14,21 @@ namespace Tracker_One_Core.Access
         public static List<XEntity> GetEntitiesListFromJson()
         {
             var res = new List<XEntity>();
-            string json = GetJsonString();
-            res = JsonConvert.DeserializeObject<List<XEntity>>(json);
-            if(res.Count > Constants.maxSupported)
+            try
             {
-                int range = res.Count - Constants.maxSupported;
-                res.RemoveRange(10, range);
+                string json = GetJsonString();
+                res = JsonConvert.DeserializeObject<List<XEntity>>(json);
+
+                // Only max entities (10 as for now)
+                if (res.Count > Constants.maxSupported)
+                {
+                    int range = res.Count - Constants.maxSupported;
+                    res.RemoveRange(10, range);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log
             }
             return res;
         }
