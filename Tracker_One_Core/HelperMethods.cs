@@ -13,9 +13,9 @@ namespace Tracker_One_Core
     {
         private static Random rnd = new Random();
 
-        public static string GetJsonFilePath()
+        public static string GetFilePath(string fileName)
         {
-            return Environment.CurrentDirectory;
+            return Path.Combine(Environment.CurrentDirectory, fileName);
         }
 
         public static Color GetEntityColor(EntityColor color)

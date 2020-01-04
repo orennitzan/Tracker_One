@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Collections;
 
 namespace Tracker_One_Core
 {
@@ -53,6 +54,7 @@ namespace Tracker_One_Core
 
         public XEntity()
         {
+            
             IsVisiable = true;
             // Init the hitory track and populate the current point. By default we want to remember at least one point.
             HistoryTrack = new List<Point>();

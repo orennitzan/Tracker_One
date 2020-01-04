@@ -21,19 +21,31 @@ namespace Tracker_One_Core.Access
 
         public static bool SaveEntitiesListToCsv(List<XEntity> entitiesList)
         {
-            // TODO Inplement
-            return false;
+            StringBuilder sb = new StringBuilder();
+            // eID1, name1, 10, 10 
+            foreach (var xe in entitiesList)
+            {
+                foreach (var p in xe.HistoryTrack)
+                {
+                    string line = string.Format("{0}, {1}, {2}, {3}\n", xe.DisplayId, xe.Name, p.X.ToString(), p.Y.ToString());
+                    sb.Append(line);
+                }
+            }
+
+            string path = HelperMethods.GetFilePath("Track_History.csv");
+            File.WriteAllText(path, sb.ToString());
+            return true;
         }
 
         private static string GetJsonString()
         {
-            var jsomPath = Path.Combine(HelperMethods.GetJsonFilePath(), "entityData.json");
+            var jsomPath = HelperMethods.GetFilePath("entityData.json");
             if (!File.Exists(jsomPath)) return null;
             StringBuilder sb = new StringBuilder();
             sb.Append(File.ReadAllText(jsomPath));
             return sb.ToString();
         }
 
-        
+
     }
 }

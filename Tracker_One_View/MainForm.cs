@@ -22,7 +22,7 @@ namespace Tracker_One_View
         private void frmMain_Load(object sender, EventArgs e)
         {
             boardTimer.Tick += new EventHandler(TimerTimeElapsed);
-            boardTimer.Interval = 5000;
+            boardTimer.Interval = 500;
         }
 
         public frmMain()
@@ -37,6 +37,7 @@ namespace Tracker_One_View
             mgr.BoardInit();
             SetHisStepsDefaults();
             LoadCheckBoxList();
+            mgr.SetHistoryNunberOfSteps(Convert.ToInt32(numUpDwn.Value));
 
         }
 
@@ -184,6 +185,7 @@ namespace Tracker_One_View
         private void btnStop_Click(object sender, EventArgs e)
         {
             boardTimer.Stop();
+            mgr.SaveDataToCsv();
         }
 
         // This is the method to run when the timer is raised.
@@ -191,6 +193,11 @@ namespace Tracker_One_View
         {
             mgr.RepositionEntities();
             this.Invalidate();
+        }
+
+        private void numUpDwn_ValueChanged(object sender, EventArgs e)
+        {
+            mgr.SetHistoryNunberOfSteps(Convert.ToInt32(numUpDwn.Value));
         }
 
     }

@@ -38,4 +38,12 @@
 	"size": "small",
 	"X": "76",
 	"Y": "8"
+}, {
+	"entity_ID": "6",
+	"name": "Oren",
+	"color": "green",
+	"shape": "circle",
+	"size": "large",
+	"X": "95",
+	"Y": "50"
 }]

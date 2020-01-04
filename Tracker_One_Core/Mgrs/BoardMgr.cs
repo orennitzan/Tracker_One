@@ -69,6 +69,11 @@ namespace Tracker_One_Core
             // reposition entity with the new point
             xe.X = newX;
             xe.Y = newY;
+
+            // Update the history track list and remove the last extra step if the list exceeded the number of his steps the user selected
+            xe.HistoryTrack.Insert(0, new Point(newX, newY));
+            if (xe.HistoryTrack.Count > _board.HisNumberOfSteps)
+                xe.HistoryTrack.RemoveRange(_board.HisNumberOfSteps - 1, xe.HistoryTrack.Count - _board.HisNumberOfSteps);
         }
 
         private int GetValidVertical(int entityY, MovementDirection direction)
@@ -126,7 +131,8 @@ namespace Tracker_One_Core
         /// <returns></returns>
         public bool SaveDataToCsv()
         {
-            return false;
+            Repository.SaveEntitiesListToCsv(_board.Entities);
+            return true;
         }
 
         /// <summary>

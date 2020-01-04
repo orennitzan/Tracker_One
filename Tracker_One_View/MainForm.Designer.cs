@@ -73,6 +73,7 @@
             0,
             0,
             0});
+            this.numUpDwn.ValueChanged += new System.EventHandler(this.numUpDwn_ValueChanged);
             // 
             // lblNSteps
             // 
