@@ -4,8 +4,8 @@
 	"color": "red",
 	"shape": "square",
 	"size": "medium",
-	"X": "23",
-	"Y": "25"
+	"X": "19",
+	"Y": "32"
 }, {
 	"entity_ID": "2",
 	"name": "Liliana",

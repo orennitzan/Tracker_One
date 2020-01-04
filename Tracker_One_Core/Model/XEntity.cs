@@ -35,6 +35,21 @@ namespace Tracker_One_Core
                 return string.Format("eID{0}_{1}", entity_ID.ToString(), Name);
             }
         }
+
+        public string DisplayId
+        {
+            get
+            {
+                return string.Format("eID{0}", entity_ID.ToString());
+            }
+        }
+
+        public bool IsVisiable { get; set; }
+
+        public XEntity()
+        {
+            IsVisiable = true;
+        }
     }
 
     public struct XDisplayEntity

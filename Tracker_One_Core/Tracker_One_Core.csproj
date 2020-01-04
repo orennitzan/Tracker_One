@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HelperMethods.cs" />
+    <Compile Include="Model\Enums.cs" />
     <Compile Include="Repo\Repository.cs" />
     <Compile Include="Model\Board.cs" />
     <Compile Include="Mgrs\BoardMgr.cs" />

@@ -31,11 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
-            this.picBoard = new System.Windows.Forms.PictureBox();
             this.numUpDwn = new System.Windows.Forms.NumericUpDown();
             this.lblNSteps = new System.Windows.Forms.Label();
             this.chkBxList = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDwn)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,15 +54,6 @@
             this.btnStop.TabIndex = 2;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
-            // 
-            // picBoard
-            // 
-            this.picBoard.Image = global::Tracker_One_View.Properties.Resources.board;
-            this.picBoard.Location = new System.Drawing.Point(200, 30);
-            this.picBoard.Name = "picBoard";
-            this.picBoard.Size = new System.Drawing.Size(500, 500);
-            this.picBoard.TabIndex = 0;
-            this.picBoard.TabStop = false;
             // 
             // numUpDwn
             // 
@@ -110,7 +99,6 @@
             this.Controls.Add(this.numUpDwn);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.picBoard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -118,7 +106,6 @@
             this.Name = "frmMain";
             this.ShowIcon = false;
             this.Text = "Tracker One";
-            ((System.ComponentModel.ISupportInitialize)(this.picBoard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDwn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -127,7 +114,6 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox picBoard;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.NumericUpDown numUpDwn;

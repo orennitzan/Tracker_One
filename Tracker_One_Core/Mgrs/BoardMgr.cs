@@ -88,6 +88,11 @@ namespace Tracker_One_Core
             return _board.Entities.Select(o => new XDisplayEntity() { Id = o.entity_ID, DisplayName = o.DisplayName }).ToList();
         }
 
+
+        public List<XEntity> GetEntitiesList()
+        {
+            return _board.Entities;
+        }
     }
 
 
