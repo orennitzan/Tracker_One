@@ -16,6 +16,11 @@ namespace Tracker_One_Core.Access
             var res = new List<XEntity>();
             string json = GetJsonString();
             res = JsonConvert.DeserializeObject<List<XEntity>>(json);
+            if(res.Count > Constants.maxSupported)
+            {
+                int range = res.Count - Constants.maxSupported;
+                res.RemoveRange(10, range);
+            }
             return res;
         }
 

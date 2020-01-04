@@ -22,5 +22,6 @@ namespace Tracker_One_Core
         public const int boardSize = 100;
         // factor is the board pixel size / board business size (100)
         public const float factor = boardPixelSize / boardSize;
+        public const int maxSupported = 10;
     }
 }
